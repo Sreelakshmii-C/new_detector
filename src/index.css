@@ -1,0 +1,57 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --color-brand-50: #eff6ff;
+  --color-brand-100: #dbeafe;
+  --color-brand-500: #3b82f6;
+  --color-brand-600: #2563eb;
+  --color-brand-700: #1d4ed8;
+  --color-brand-900: #1e3a8a;
+  
+  --color-alert-500: #ef4444;
+  --color-alert-600: #dc2626;
+
+  --color-success-500: #22c55e;
+  
+  --color-surface: #ffffff;
+  --color-surface-dark: #111827;
+  --color-surface-hover: #f3f4f6;
+  --color-surface-hover-dark: #1f2937;
+  --color-border: #e5e7eb;
+  --color-border-dark: #374151;
+}
+
+@custom-variant dark (&:is(.dark *));
+
+@layer base {
+  :root {
+    --bg-primary: #f9fafb;
+    --bg-surface: #ffffff;
+    --text-primary: #111827;
+    --text-secondary: #6b7280;
+    --border-color: #e5e7eb;
+  }
+
+  :root.dark {
+    --bg-primary: #030712;
+    --bg-surface: #111827;
+    --text-primary: #f9fafb;
+    --text-secondary: #9ca3af;
+    --border-color: #374151;
+  }
+
+  body {
+    @apply bg-[var(--bg-primary)] text-[var(--text-primary)] antialiased transition-colors duration-200;
+  }
+}
+
+@layer utilities {
+  .glass-panel {
+    @apply bg-white/70 dark:bg-gray-900/70 backdrop-blur-md border border-gray-200 dark:border-gray-800 shadow-xl;
+  }
+
+  .interactive-card {
+    @apply bg-[var(--bg-surface)] border border-[var(--border-color)] rounded-xl shadow-sm hover:shadow-md transition-all duration-300;
+  }
+}
