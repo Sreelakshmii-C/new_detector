@@ -12,16 +12,16 @@ export default function Login() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+
     try {
-      const response = await fetch('http://localhost:5000/login', {
+      const response = await fetch('http://localhost:5000/loginhttps://new-detector-1.onrender.com/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password })
       });
-      
+
       const data = await response.json();
-      
+
       if (!response.ok) {
         setError(data.error || 'Invalid email or password');
         toast.error('❌ Invalid credentials');
@@ -34,13 +34,13 @@ export default function Login() {
       // Simulation Logic
       const newIp = `192.168.${Math.floor(Math.random() * 255)}.${Math.floor(Math.random() * 255)}`;
       const deviceString = navigator.userAgent;
-      
+
       let osStr = 'Unknown OS';
       if (/Mac OS X/i.test(deviceString)) osStr = 'macOS';
       else if (/Windows/i.test(deviceString)) osStr = 'Windows';
       else if (/Android/i.test(deviceString)) osStr = 'Android';
       else if (/iPhone|iPad/i.test(deviceString)) osStr = 'iOS';
-      
+
       const newLog = {
         id: `log-${Date.now()}`,
         timestamp: new Date().toISOString(),
@@ -83,9 +83,9 @@ export default function Login() {
           resolved: false
         });
       }
-      
+
       addActivityLog(newLog);
-      
+
       navigate('/dashboard');
     } catch (err) {
       setError('Failed to connect to the server');
